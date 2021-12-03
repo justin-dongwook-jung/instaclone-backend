@@ -1,16 +1,10 @@
 import client from "../../client";
 import bcrypt from "bcrypt";
+import {protectedResolver} from "../users.utils";
 
 export default {
   Mutation: {
-    editProfile: async (_, {firstName, lastName, username, email, password: newPassword }, { loggedInUser, protectResolver } ) => {
-
-      if(!loggedInUser){
-        return {
-          ok: false,
-          error: "You need to login."
-        }
-      }
+    editProfile: protectedResolver(async (_, {firstName, lastName, username, email, password: newPassword }, { loggedInUser } ) => {
 
       let uglyPassword = null;
       if (newPassword) uglyPassword = await bcrypt.hash(newPassword, 10);
@@ -38,6 +32,6 @@ export default {
           error: "Could not edit profile"
         }
       }
-    }
+    })
   }
 }
