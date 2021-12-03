@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 
 export default {
   Mutation: {
-    editProfile: async (_, {fistName, lastName, username, email, password: newPassword}) => {
+    editProfile: async (_, {firstName, lastName, username, email, password: newPassword}) => {
       let uglyPassword = null;
       if (newPassword) uglyPassword = await bcrypt.hash(newPassword, 10);
 
@@ -11,11 +11,13 @@ export default {
         where: {
           id: 1
         }, data: {
-          fistName, lastName, username, email, ...(uglyPassword && {password: uglyPassword})
+          firstName: firstName,
+          lastName: lastName,
+          username: username,
+          email: email,
+          ...(uglyPassword && {password: uglyPassword})
         }
       })
-
-      console.log(updatedUser)
 
       if(updatedUser.id){
         return {
