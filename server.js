@@ -1,11 +1,16 @@
+import jwt from "jsonwebtoken";
+
 require('dotenv').config()
 import { ApolloServer } from "apollo-server";
 import schema from './schema';
+import {getUser} from "./users/users.utils";
 
 const server = new ApolloServer({
   schema,
-  context: {
-    token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjM4NTQwNjc3fQ.8xD4TnRk_Bg3Mr3Ne4DBztbDkw4XgQ-I2xmfOd-CA3A"
+  context: async ({ req }) => {
+    return {
+      loggedInUser: await getUser(req.headers.token)
+    }
   }
 })
 
