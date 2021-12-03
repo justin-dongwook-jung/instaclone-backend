@@ -9,15 +9,15 @@ export default {
     ) => {
       try {
         const existingUser = await client.user.findFirst({
-        where: {
-          OR: [
-            {
-              username: username
-            },
-            {
-              email: email
-            }
-          ]
+          where: {
+            OR: [
+              {
+                username: username
+              },
+              {
+                email: email
+              }
+            ]
           }
         });
 
@@ -38,6 +38,24 @@ export default {
       } catch (e) {
         return e;
       }
+    },
+    login: async (_, { username, password }) => {
+      const user = await client.user.findFirst({ where: {username} });
+      if(!user){
+        return {
+          ok: false,
+          error: "user not found."
+        }
+      }
+      const passwordOk = await bcrypt.compare(password, user.password);
+      if(!passwordOk){
+        return {
+          ok: false,
+          error: "incorrect password."
+        }
+      }
+
+
     }
   }
 }
