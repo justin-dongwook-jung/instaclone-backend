@@ -2,6 +2,7 @@ require('dotenv').config()
 // import { ApolloServer } from "apollo-server";
 import express from "express";
 import http from "http";
+import logger from "morgan";
 import { ApolloServer } from "apollo-server-express";
 import { ApolloServerPluginDrainHttpServer, ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
 import { graphqlUploadExpress } from "graphql-upload";
@@ -10,6 +11,7 @@ import { getUser } from "./users/users.utils";
 
 const app = express();
 app.use(graphqlUploadExpress());
+app.use(logger("tiny"));
 
 const httpServer = http.createServer(app);
 
