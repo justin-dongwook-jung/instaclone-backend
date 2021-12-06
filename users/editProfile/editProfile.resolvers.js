@@ -7,7 +7,9 @@ export default {
   Upload: GraphQLUpload,
   Mutation: {
     editProfile: protectedResolver(async (_, {firstName, lastName, username, email, password: newPassword, bio, avatar }, { loggedInUser } ) => {
-      console.log(avatar);
+      const { filename, createReadStream } = await avatar;
+      const stream = createReadStream();
+
       let uglyPassword = null;
       if (newPassword) uglyPassword = await bcrypt.hash(newPassword, 10);
 
