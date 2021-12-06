@@ -10,5 +10,18 @@ Instaclone Backend
 - [x] Edit Profile
 - [x] Follow User
 - [x] unfollow User
-- [x] See Followers and See Following w/ Pagination
-- [ ] Change Avatar (Image Upload)
+- [x] See Followers w/ Pagination
+- [x] See Following w/ Pagination
+- [ ] Computed Fields
+- [ ] Search Users
+
+## Photos
+
+- [ ] See Photo
+- [ ] Upload Photo
+- [ ] Edit Photo
+- [ ] Like / Unlike Photo
+- [ ] See Photo Likes
+- [ ] See Feed
+- [ ] Search Photos
+- [ ] See Hashtags
