@@ -10,8 +10,9 @@ import { typeDefs, resolvers } from './schema';
 import { getUser } from "./users/users.utils";
 
 const app = express();
-app.use(graphqlUploadExpress());
 app.use(logger("tiny"));
+app.use(graphqlUploadExpress());
+app.use("/static", express.static("uploads"));
 
 const httpServer = http.createServer(app);
 
