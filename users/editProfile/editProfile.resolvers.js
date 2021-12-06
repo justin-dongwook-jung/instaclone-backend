@@ -4,7 +4,7 @@ import {protectedResolver} from "../users.utils";
 
 export default {
   Mutation: {
-    editProfile: protectedResolver(async (_, {firstName, lastName, username, email, password: newPassword }, { loggedInUser } ) => {
+    editProfile: protectedResolver(async (_, {firstName, lastName, username, email, password: newPassword, bio }, { loggedInUser } ) => {
 
       let uglyPassword = null;
       if (newPassword) uglyPassword = await bcrypt.hash(newPassword, 10);
