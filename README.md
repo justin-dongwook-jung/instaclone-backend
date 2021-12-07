@@ -12,8 +12,8 @@ Instaclone Backend
 - [x] unfollow User
 - [x] See Followers w/ Pagination
 - [x] See Following w/ Pagination
-- [ ] Computed Fields
-- [ ] Search Users
+- [x] Computed Fields
+- [x] Search Users
 
 ## Photos
 
