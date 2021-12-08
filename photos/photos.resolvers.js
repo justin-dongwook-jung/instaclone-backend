@@ -5,8 +5,8 @@ export default {
     user: ({ userId }) => {
       return client.user.findUnique({ where: { id: userId } });
     },
-    hashtags: ({ id }) =>
-      client.hashtag.findMany({
+    hashtags: ({ id }) => {
+      return client.hashtag.findMany({
         where: {
           photos: {
             some: {
@@ -14,7 +14,15 @@ export default {
             }
           }
         }
-      })
+      });
+    },
+    likes: ({ id }) => {
+      return client.like.count({
+        where: {
+          photoId: id
+        }
+      });
+    }
   },
   Hashtag: {
     photos: ({ id }, { page }, { loggedInUser }) => {
