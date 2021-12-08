@@ -19,12 +19,12 @@ Instaclone Backend
 
 - [x] Upload Photo
 - [x] See Photo
-- [ ] See Hashtags
+- [x] See Hashtags
+- [x] Search Photos
 - [ ] Edit Photo
 - [ ] Like / Unlike Photo
 - [ ] See Photo Likes
 - [ ] See Feed
-- [ ] Search Photos
 
 ## Comments
 
