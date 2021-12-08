@@ -26,7 +26,7 @@ export default {
           };
         }
 
-        const photo = await client.photo.update({
+        await client.photo.update({
           where: {
             id: id
           },
@@ -38,6 +38,10 @@ export default {
             }
           }
         });
+
+        return {
+            ok: true
+        }
       }
     )
   }
